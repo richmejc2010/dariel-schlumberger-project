@@ -1,13 +1,27 @@
 package com.schlumberger.app.services;
 
 import com.schlumberger.app.entities.CompanyDTO;
+import com.schlumberger.app.entities.LegalCasesDTO;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 public interface CompanyService {
 
     CompanyDTO addCompany(CompanyDTO companyData) throws IOException, SQLException;
 
     CompanyDTO consultCompany() throws IOException, SQLException;
+
+    List<LegalCasesDTO> legalCases() throws IOException, SQLException;
+
+    int calculateSumActiveLegalCases() throws IOException, SQLException;
+
+    int calculateAverageLegalCase() throws IOException, SQLException;
+
+    int calculateNumberLegalCases() throws IOException, SQLException;
+
+    List<LegalCasesDTO> listLegalCases() throws IOException, SQLException;
+
+    List<LegalCasesDTO> listLegalCasesSameDepartament() throws IOException, SQLException;
 }

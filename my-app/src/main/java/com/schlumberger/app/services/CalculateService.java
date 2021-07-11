@@ -1,6 +1,7 @@
 package com.schlumberger.app.services;
 
 import com.schlumberger.app.entities.CompanyDTO;
+import com.schlumberger.app.entities.LegalCasesDTO;
 
 import java.math.BigInteger;
 import java.util.Date;
@@ -14,7 +15,7 @@ public interface CalculateService {
 
     int calculateNumberLegalCases (CompanyDTO data);
 
-    List<CompanyDTO> getListLegalCases (Date date);
+    List<LegalCasesDTO> getListLegalCases (Date date);
 
     List<CompanyDTO> getListLegalCasesSameDapartment (CompanyDTO data);
 

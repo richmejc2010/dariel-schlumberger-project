@@ -1,30 +1,16 @@
 package com.schlumberger.app.entities;
 
-import java.util.Date;
-
 public class CompanyDTO {
-    private long activeLegalCases;
-    private int numberID;
-    private String companyName;
-    private String department;
-    private Date Date;
-    private String legalCaseNumber;
     private String registerNumber;
+    private String companyName;
+    private String departament;
 
-    public long getActiveLegalCases() {
-        return activeLegalCases;
+    public String getRegisterNumber() {
+        return registerNumber;
     }
 
-    public void setActiveLegalCases(long activeLegalCases) {
-        this.activeLegalCases = activeLegalCases;
-    }
-
-    public int getNumberID() {
-        return numberID;
-    }
-
-    public void setNumberID(int numberID) {
-        this.numberID = numberID;
+    public void setRegisterNumber(String registerNumber) {
+        this.registerNumber = registerNumber;
     }
 
     public String getCompanyName() {
@@ -35,35 +21,11 @@ public class CompanyDTO {
         this.companyName = companyName;
     }
 
-    public String getDepartment() {
-        return department;
+    public String getDepartament() {
+        return departament;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    public java.util.Date getDate() {
-        return Date;
-    }
-
-    public void setDate(java.util.Date date) {
-        Date = date;
-    }
-
-    public String getLegalCaseNumber() {
-        return legalCaseNumber;
-    }
-
-    public void setLegalCaseNumber(String legalCaseNumber) {
-        this.legalCaseNumber = legalCaseNumber;
-    }
-
-    public String getRegisterNumber() {
-        return registerNumber;
-    }
-
-    public void setRegisterNumber(String registerNumber) {
-        this.registerNumber = registerNumber;
+    public void setDepartament(String departament) {
+        this.departament = departament;
     }
 }
