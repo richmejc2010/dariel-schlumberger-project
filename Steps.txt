@@ -32,3 +32,13 @@ Info: This is just to convert the MAVEN project to git in your local andin git
 git init -b main                 --> (create project as git to upload in github)
 git add -A                       --> (to add the files)
 git commit -m "2021-07-10 Fisrt step, folder structures, and connection to Postgressql DB "
+
+Create in github the repo
+https://github.com/richmejc2010/dariel-schlumberger-project
+then 
+git push https://github.com/richmejc2010/dariel-schlumberger-project.git 
+
+
+git remote add origin https://github.com/richmejc2010/dariel-schlumberger-project.git
+git push origin  https://github.com/richmejc2010/dariel-schlumberger-project.git
+git remote add origin https://github.com/richmejc2010/dariel-schlumberger-project.git
