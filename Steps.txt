@@ -39,6 +39,8 @@ then
 git push https://github.com/richmejc2010/dariel-schlumberger-project.git 
 
 
-git remote add origin https://github.com/richmejc2010/dariel-schlumberger-project.git
-git push origin  https://github.com/richmejc2010/dariel-schlumberger-project.git
-git remote add origin https://github.com/richmejc2010/dariel-schlumberger-project.git
+I had to execute this line
+git pull origin main --allow-unrelated-histories
+
+then I could execute
+git push origin main            --> add the files to github
