@@ -9,7 +9,6 @@ public class CompanyDTO {
     private String department;
     private Date Date;
     private String legalCaseNumber;
-    private Status status;
     private String registerNumber;
 
     public long getActiveLegalCases() {
@@ -58,14 +57,6 @@ public class CompanyDTO {
 
     public void setLegalCaseNumber(String legalCaseNumber) {
         this.legalCaseNumber = legalCaseNumber;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
     }
 
     public String getRegisterNumber() {

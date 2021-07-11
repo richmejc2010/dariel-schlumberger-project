@@ -1,7 +1,6 @@
 package com.schlumberger.app;
 
 import com.schlumberger.app.entities.CompanyDTO;
-import com.schlumberger.app.entities.Status;
 import com.schlumberger.app.services.CompanyService;
 import com.schlumberger.app.services.impl.CompanyServiceImpl;
 
@@ -17,21 +16,34 @@ public class App {
     public static void main( String[] args ) throws IOException, SQLException {
         System.out.println( "Hello World!" );
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-        System.out.println("Enter username");
+        System.out.println("Enter Command");
 
-        String userName = myObj.nextLine();  // Read user input
-        CompanyDTO companyDTO = new CompanyDTO();
-        companyDTO.setCompanyName(userName);
-        System.out.println("Username is: " + userName);  // Output user input
-        Status myVar = Status.MEDIUM;
-        System.out.println("Username is: " + myVar);  // Output user input
+        String command = myObj.nextLine();  // Read user input
 
-        String numberID = myObj.nextLine();  // Read user input
-        System.out.println("numberID is: " + numberID);  // Output user input
-        companyDTO.setNumberID((Integer.parseInt(numberID)));
+        switch (command) {
+            case "A":
+                // insert into DATA BASE
+                System.out.println("Enter company name");
+                String companyName = myObj.nextLine();
+                CompanyDTO companyDTO = new CompanyDTO();
+                companyDTO.setCompanyName(companyName);
 
-        // insert into DATA BASE
-        CompanyService company = new CompanyServiceImpl();
-        company.addCompany(companyDTO);
+                System.out.println("Enter numberID");
+                int numberId = myObj.nextInt();
+                companyDTO.setNumberID(numberId);
+                CompanyService company = new CompanyServiceImpl();
+                company.addCompany(companyDTO);
+                break;
+            case "C":
+                CompanyService companyConsult = new CompanyServiceImpl();
+                companyConsult.consultCompany();
+            case "M":
+//                return new Line();
+            case "Q":
+                System.exit(0);
+            default:
+//                throw new InvalidInputException("Invalid command!");
+        }
+
     }
 }

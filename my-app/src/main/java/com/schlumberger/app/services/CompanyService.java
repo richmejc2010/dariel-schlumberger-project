@@ -8,4 +8,6 @@ import java.sql.SQLException;
 public interface CompanyService {
 
     CompanyDTO addCompany(CompanyDTO companyData) throws IOException, SQLException;
+
+    CompanyDTO consultCompany() throws IOException, SQLException;
 }
