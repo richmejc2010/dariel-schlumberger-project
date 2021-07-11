@@ -35,7 +35,7 @@ public class CompanyServiceImpl implements CompanyService {
 
             pstmt.setString(1, companyData.getRegisterNumber());
             pstmt.setString(2, companyData.getCompanyName());
-            pstmt.setString(3, companyData.getCompanyName());
+            pstmt.setString(3, companyData.getDepartament());
 
             int affectedRows = pstmt.executeUpdate();
             // check the affected rows
@@ -46,15 +46,17 @@ public class CompanyServiceImpl implements CompanyService {
                         id = rs.getLong(1);
                     }
                 } catch (SQLException ex) {
-                    System.out.println(ex.getMessage());
+                    System.out.println("CompanyServiceImpl_addCompany_SQLException_1: "+ ex.toString());
+                    log.info("CompanyServiceImpl_addCompany_SQLException_1: "+ex.toString());
                 }
+            } else {
+                System.out.println("No insert apply");
+                log.info("No insert apply");
             }
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-            log.info("CompanyServiceImpl_addCompany: "+ex.toString());
+            System.out.println("CompanyServiceImpl_addCompany_SQLException_2: "+ ex.toString());
+            log.info("CompanyServiceImpl_addCompany_SQLException_2: "+ex.toString());
         }
-
-        log.info("Database connection test id: " + id);
         return null;
     }
 
@@ -72,6 +74,7 @@ public class CompanyServiceImpl implements CompanyService {
             System.out.println("Result REGISTER_NUMBER = " + rs.getString("REGISTER_NUMBER"));
             System.out.println("Result COMPANY NAME  = " + rs.getString("COMPANY_NAME"));
             System.out.println("Result DEPARTAMENT   = " + rs.getString("DEPARTAMENT"));
+            System.out.println("==========================================");
             companyDTO.setCompanyName(rs.getString("COMPANY_NAME"));
             companyDTO.setRegisterNumber(rs.getString("REGISTER_NUMBER"));
             companyDTO.setDepartament(rs.getString("DEPARTAMENT"));
@@ -121,7 +124,7 @@ public class CompanyServiceImpl implements CompanyService {
         ResultSet rs = st.executeQuery(
                 "SELECT SUM(TOTAL) TOTAL_ACTIVE_LEGAl_CASES " +
                     "FROM LEGAL_CASES " +
-                    "WHERE STATE_CASE= 'active'");
+                    "WHERE STATE_CASE = 'active'");
         while (rs.next()) {
             totalActiveLegalCases = rs.getInt("TOTAL_ACTIVE_LEGAl_CASES");
             System.out.println("Result TOTAL_ACTIVE_LEGAl_CASES = " + totalActiveLegalCases);

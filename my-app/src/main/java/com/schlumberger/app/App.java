@@ -8,10 +8,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-/**
- * Hello world!
- *
- */
 public class App {
     public static void main( String[] args ) throws IOException, SQLException {
         System.out.println( "Hello World!" );
@@ -23,14 +19,20 @@ public class App {
         switch (command) {
             case "A":
                 // insert into DATA BASE
+                CompanyDTO companyDTO = new CompanyDTO();
+
                 System.out.println("Enter company name");
                 String companyName = myObj.nextLine();
-                CompanyDTO companyDTO = new CompanyDTO();
                 companyDTO.setCompanyName(companyName);
 
-                System.out.println("Enter numberID");
-                String numberId = myObj.nextLine();
-                companyDTO.setRegisterNumber(numberId);
+                System.out.println("Enter Register Number");
+                String registerNumber = myObj.nextLine();
+                companyDTO.setRegisterNumber(registerNumber);
+
+                System.out.println("Enter Departament");
+                String departament = myObj.nextLine();
+                companyDTO.setDepartament(departament);
+
                 CompanyService company = new CompanyServiceImpl();
                 company.addCompany(companyDTO);
                 break;
