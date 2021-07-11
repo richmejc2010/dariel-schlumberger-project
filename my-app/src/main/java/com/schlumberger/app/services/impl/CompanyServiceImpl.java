@@ -23,11 +23,11 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public CompanyDTO addCompany(CompanyDTO companyData) throws IOException, SQLException {
+    public String addCompany(CompanyDTO companyData) throws IOException, SQLException {
         // Connect to database
         String SQL = "INSERT INTO COMPANY (REGISTER_NUMBER, COMPANY_NAME, DEPARTAMENT) "
                 + "VALUES(?, ?, ?)";
-
+        String result="";
         long id = 0;
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(SQL,
@@ -40,28 +40,22 @@ public class CompanyServiceImpl implements CompanyService {
             int affectedRows = pstmt.executeUpdate();
             // check the affected rows
             if (affectedRows > 0) {
-                // get the ID back
-                try (ResultSet rs = pstmt.getGeneratedKeys()) {
-                    if (rs.next()) {
-                        id = rs.getLong(1);
-                    }
-                } catch (SQLException ex) {
-                    System.out.println("CompanyServiceImpl_addCompany_SQLException_1: "+ ex.toString());
-                    log.info("CompanyServiceImpl_addCompany_SQLException_1: "+ex.toString());
-                }
+               result="Data inserted successfully";   
             } else {
+                result = "No insert apply"; 
                 System.out.println("No insert apply");
                 log.info("No insert apply");
             }
         } catch (SQLException ex) {
             System.out.println("CompanyServiceImpl_addCompany_SQLException_2: "+ ex.toString());
             log.info("CompanyServiceImpl_addCompany_SQLException_2: "+ex.toString());
+            result = "Error inserting into DB: " + ex.toString();
         }
-        return null;
+        return result;
     }
 
     @Override
-    public CompanyDTO consultCompany() throws IOException, SQLException {
+    public List<CompanyDTO> consultCompany() throws IOException, SQLException {
         // Connect to database
         Properties properties = new Properties();
         properties.load(ConnectDataBaseSingleton.class.getClassLoader().getResourceAsStream("application.properties"));
@@ -70,6 +64,7 @@ public class CompanyServiceImpl implements CompanyService {
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery("SELECT * FROM COMPANY");
         CompanyDTO companyDTO = new CompanyDTO();
+        List<CompanyDTO> listCompanies = new ArrayList<>();
         while (rs.next()) {
             System.out.println("Result REGISTER_NUMBER = " + rs.getString("REGISTER_NUMBER"));
             System.out.println("Result COMPANY NAME  = " + rs.getString("COMPANY_NAME"));
@@ -78,8 +73,9 @@ public class CompanyServiceImpl implements CompanyService {
             companyDTO.setCompanyName(rs.getString("COMPANY_NAME"));
             companyDTO.setRegisterNumber(rs.getString("REGISTER_NUMBER"));
             companyDTO.setDepartament(rs.getString("DEPARTAMENT"));
+            listCompanies.add(companyDTO);
         }
-        return companyDTO;
+        return listCompanies;
     }
 
     @Override

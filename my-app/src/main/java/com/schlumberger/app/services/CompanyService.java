@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface CompanyService {
 
-    CompanyDTO addCompany(CompanyDTO companyData) throws IOException, SQLException;
+    String addCompany(CompanyDTO companyData) throws IOException, SQLException;
 
-    CompanyDTO consultCompany() throws IOException, SQLException;
+    List<CompanyDTO> consultCompany() throws IOException, SQLException;
 
     List<LegalCasesDTO> legalCases() throws IOException, SQLException;
 
