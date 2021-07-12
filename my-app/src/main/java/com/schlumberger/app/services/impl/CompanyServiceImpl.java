@@ -8,8 +8,6 @@ import com.schlumberger.app.services.CompanyService;
 import java.io.IOException;
 import java.sql.*;
 import java.text.DecimalFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -304,19 +302,21 @@ public class CompanyServiceImpl implements CompanyService {
     
         public String addLegalCase(LegalCasesDTO legalCaseData) throws IOException, SQLException {
 
-        String SQL = "INSERT INTO LEGAL_CASES (LEGAL_CASE_NUMBER, REGISTER_NUMBER, DEPARTAMENT_CASE, TOTAL, STATE_CASE) "
-                + "VALUES(?, ?, ?, ?, ?)";
+        String SQL = "INSERT INTO LEGAL_CASES (LEGAL_CASE_NUMBER, REGISTER_NUMBER, DEPARTAMENT_CASE, TOTAL, STATE_CASE, STARTED) "
+                + "VALUES(?, ?, ?, ?, ?, ?)";
         String result="";
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(SQL,
                      Statement.RETURN_GENERATED_KEYS)) {
+            java.util.Date date = new java.util.Date();
+            java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 
             pstmt.setString(1, legalCaseData.getLegalCaseNumber());
             pstmt.setString(2, legalCaseData.getRegisterNumber());
             pstmt.setString(3, legalCaseData.getDepartamentCase());
             pstmt.setInt(4, legalCaseData.getTotal());
             pstmt.setString(5, legalCaseData.getStateCase());
-           // pstmt.setDate(6, new java.util.Date(legalCaseData.getStarted()));
+            pstmt.setDate(6, sqlDate);
             
             int affectedRows = pstmt.executeUpdate();
             // check the affected rows

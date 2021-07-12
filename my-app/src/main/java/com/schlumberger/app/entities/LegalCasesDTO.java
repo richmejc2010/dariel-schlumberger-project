@@ -1,6 +1,6 @@
 package com.schlumberger.app.entities;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class LegalCasesDTO {
     private String legalCaseNumber;

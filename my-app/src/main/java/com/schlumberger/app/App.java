@@ -7,6 +7,8 @@ import com.schlumberger.app.services.impl.CompanyServiceImpl;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.sql.Date;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -91,8 +93,8 @@ public class App {
                     
                     System.out.println("State Legal Case");
                     String stateLegalCase = myObj.nextLine();
-                    legalcaseDTO.setStateCase(stateLegalCase);    
-                    
+                    legalcaseDTO.setStateCase(stateLegalCase);
+
                     CompanyService legalCase = new CompanyServiceImpl();
                     legalCase.addLegalCase(legalcaseDTO); 
                     break;    
