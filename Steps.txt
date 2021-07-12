@@ -44,3 +44,8 @@ git pull origin main --allow-unrelated-histories
 
 then I could execute
 git push origin main            --> add the files to github
+git status
+
+Preguntas:
+Para qué el override() en los metodos implementados
+
