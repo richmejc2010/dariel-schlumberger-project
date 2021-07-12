@@ -7,6 +7,9 @@ import com.schlumberger.app.services.CompanyService;
 
 import java.io.IOException;
 import java.sql.*;
+import java.text.DecimalFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -15,7 +18,7 @@ import java.util.logging.Logger;
 public class CompanyServiceImpl implements CompanyService {
 
     private static Logger log;
-
+    private  DecimalFormat df = new DecimalFormat("#.00");
     public Connection connect() throws SQLException, IOException {
         Properties properties = new Properties();
         properties.load(ConnectDataBaseSingleton.class.getClassLoader().getResourceAsStream("application.properties"));
@@ -112,6 +115,7 @@ public class CompanyServiceImpl implements CompanyService {
     public int calculateSumActiveLegalCases() throws IOException, SQLException {
         int totalActiveLegalCases = 0;
         // Connect to database
+       // DecimalFormat df = new DecimalFormat("#.00");
         Properties properties = new Properties();
         properties.load(ConnectDataBaseSingleton.class.getClassLoader().getResourceAsStream("application.properties"));
 
@@ -123,7 +127,8 @@ public class CompanyServiceImpl implements CompanyService {
                     "WHERE STATE_CASE = 'active'");
         while (rs.next()) {
             totalActiveLegalCases = rs.getInt("TOTAL_ACTIVE_LEGAl_CASES");
-            System.out.println("Result TOTAL_ACTIVE_LEGAl_CASES = " + totalActiveLegalCases);
+            System.out.println("Result TOTAL_ACTIVE_LEGAl_CASES = USD " + df.format(totalActiveLegalCases) );
+            System.out.println("=========================================================================================================================================================");
         }
         return totalActiveLegalCases;
     }
@@ -145,7 +150,8 @@ public class CompanyServiceImpl implements CompanyService {
                         "and DEPARTAMENT_CASE = 'Rio de Janeiro'");
         while (rs.next()) {
             avergageLegalCase = rs.getInt("AVERAGE_LEGAL_CASE_RIO");
-            System.out.println("Result AVERAGE_LEGAL_CASE_RIO = " + avergageLegalCase);
+            System.out.println("Result AVERAGE_LEGAL_CASE_RIO = USD " + df.format(avergageLegalCase));
+            System.out.println("=========================================================================================================================================================");
         }
         return avergageLegalCase;
     }
@@ -166,6 +172,7 @@ public class CompanyServiceImpl implements CompanyService {
         while (rs.next()) {
             calculateNumberLegalCases = rs.getInt("AMOUNT_GREATER_HUNDRED_THOUSAND");
             System.out.println("Result AMOUNT_GREATER_HUNDRED_THOUSAND = " + calculateNumberLegalCases);
+            System.out.println("=========================================================================================================================================================");
         }
         return calculateNumberLegalCases;
     }
@@ -192,7 +199,7 @@ public class CompanyServiceImpl implements CompanyService {
             System.out.println("listLegalCases_TOTAL = " + rs.getInt("TOTAL"));
             System.out.println("listLegalCases_STATE_CASE = " + rs.getString("STATE_CASE"));
             System.out.println("listLegalCases_STARTED = " + rs.getDate("STARTED"));
-            System.out.println("==========================================");
+            System.out.println("=========================================================================================================================================================");
             legalCasesDTO.setLegalCaseNumber(rs.getString("LEGAL_CASE_NUMBER"));
             legalCasesDTO.setRegisterNumber(rs.getString("REGISTER_NUMBER"));
             legalCasesDTO.setDepartamentCase(rs.getString("DEPARTAMENT_CASE"));
@@ -293,4 +300,39 @@ public class CompanyServiceImpl implements CompanyService {
         }   
       return listLegalCasesContainAcronym;
     }
+    
+        public String addLegalCase(LegalCasesDTO legalCaseData) throws IOException, SQLException {
+
+        String SQL = "INSERT INTO LEGAL_CASES (LEGAL_CASE_NUMBER, REGISTER_NUMBER, DEPARTAMENT_CASE, TOTAL, STATE_CASE) "
+                + "VALUES(?, ?, ?, ?, ?)";
+        String result="";
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(SQL,
+                     Statement.RETURN_GENERATED_KEYS)) {
+
+            pstmt.setString(1, legalCaseData.getLegalCaseNumber());
+            pstmt.setString(2, legalCaseData.getRegisterNumber());
+            pstmt.setString(3, legalCaseData.getDepartamentCase());
+            pstmt.setInt(4, legalCaseData.getTotal());
+            pstmt.setString(5, legalCaseData.getStateCase());
+           // pstmt.setDate(6, new java.util.Date(legalCaseData.getStarted()));
+            
+            int affectedRows = pstmt.executeUpdate();
+            // check the affected rows
+            if (affectedRows > 0) {
+               result="Data inserted successfully";   
+            } else {
+                result = "No insert apply"; 
+                System.out.println("No insert apply");
+                log.info("No insert apply");
+            }
+        } catch (SQLException ex) {
+            System.out.println("CompanyServiceImpl_addCompany_SQLException_2: "+ ex.toString());
+            log.info("addLegalCase_SQLException_2: "+ex.toString());
+            result = "Error inserting into DB: " + ex.toString();
+        }
+        return result;
+    }
+    
+    
 }

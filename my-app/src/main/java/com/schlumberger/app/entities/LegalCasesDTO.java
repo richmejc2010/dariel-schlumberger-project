@@ -1,5 +1,7 @@
 package com.schlumberger.app.entities;
 
+import java.text.SimpleDateFormat;
+
 import java.util.Date;
 
 public class LegalCasesDTO {
@@ -56,6 +58,9 @@ public class LegalCasesDTO {
     }
 
     public void setStarted(Date started) {
+        //SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+        //Date date = new Date();  
+        //System.out.println(formatter.format(date));  
         this.started = started;
     }
 

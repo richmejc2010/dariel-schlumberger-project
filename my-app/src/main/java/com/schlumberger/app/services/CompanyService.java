@@ -27,4 +27,6 @@ public interface CompanyService {
     
     List<LegalCasesDTO> listLegalCasesContainAcronymService()throws IOException, SQLException ;
     
+    String addLegalCase(LegalCasesDTO legalCaseData) throws IOException, SQLException;
+    
 }

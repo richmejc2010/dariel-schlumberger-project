@@ -1,6 +1,7 @@
 package com.schlumberger.app;
 
 import com.schlumberger.app.entities.CompanyDTO;
+import com.schlumberger.app.entities.LegalCasesDTO;
 import com.schlumberger.app.services.CompanyService;
 import com.schlumberger.app.services.impl.CompanyServiceImpl;
 
@@ -67,6 +68,33 @@ public class App {
                     flagMenu= true;
                     System.out.println("Thanks for using Schulmber Demo System ");
                     break;                
+                case 10: //Insert Legal Case
+                                    // insert into DATA BASE
+                    LegalCasesDTO legalcaseDTO = new LegalCasesDTO();
+
+                    System.out.println("Enter Legal Case Number");
+                    String legalCaseNumber = myObj.nextLine();
+                    legalcaseDTO.setLegalCaseNumber(legalCaseNumber); 
+
+                    System.out.println("Enter Register Number");
+                    String registerNumberLegal = myObj.nextLine();
+                    legalcaseDTO.setRegisterNumber(registerNumberLegal);
+
+                    System.out.println("Enter Departament Case");
+                    String departamentLegalCase = myObj.nextLine();
+                    legalcaseDTO.setDepartamentCase(departamentLegalCase);
+                    
+                    System.out.println("Total Amount Legal Case");
+                    int totalLegalCase = Integer.parseInt(myObj.nextLine());
+                    legalcaseDTO.setTotal(totalLegalCase);         
+                    
+                    System.out.println("State Legal Case");
+                    String stateLegalCase = myObj.nextLine();
+                    legalcaseDTO.setStateCase(stateLegalCase);    
+                    
+                    CompanyService legalCase = new CompanyServiceImpl();
+                    legalCase.addLegalCase(legalcaseDTO); 
+                    break;    
                 default: // Invalid Option
                       System.out.println("Invalid Option");
                       break;
