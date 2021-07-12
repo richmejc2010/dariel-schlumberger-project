@@ -7,8 +7,10 @@ import com.schlumberger.app.services.impl.CompanyServiceImpl;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class App {
+    private static Logger log;
     
     public static void main( String[] args ) throws IOException, SQLException {
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object
@@ -86,7 +88,7 @@ public class App {
               "\n**"+"   8. Gettting Recors From COMPANY." + "                                                           "+"**" +    
               "\n**"+"   9. List of legal cases on the month of September and year 2007." + "                            "+"**" + 
               "\n**"+"   10. Gettting Recors From LEGAL CASES." + "                                                      "+"**" + 
-              "\n**"+"   0. Salir." + "                                                                                  "+"**" +
+              "\n**"+"   0. Exit." + "                                                                                  "+"**" +
               "\n***************************************************************************************************" +
               "\n***************************************************************************************************"   
                 );
@@ -94,42 +96,122 @@ public class App {
        
     }
     
-    public static void calculateSumLegal() throws IOException, SQLException{
+    public static void calculateSumLegal() {
+        try{
          CompanyService calculateSumLegalService = new CompanyServiceImpl();
          calculateSumLegalService.calculateSumActiveLegalCases();
+        }catch( SQLException sql){
+            log.info("calculateSumLegal_SQLException_2: "+sql.toString());             
+        }
+        catch( IOException ioe){
+            log.info("calculateSumLegal_SQLException_2: "+ioe.toString());             
+        }
+         catch( Exception ex){
+            log.info("calculateSumLegal_SQLException_2: "+ex.toString());             
+        }       
     }
     
-    public static void calculateAverageLegalCase() throws IOException, SQLException{
+    public static void calculateAverageLegalCase(){
+        try{
          CompanyService calculateAverageService = new CompanyServiceImpl();
          calculateAverageService.calculateAverageLegalCase();
+        }catch( SQLException sql){
+            log.info("calculateAverageLegalCase_SQLException_2: "+sql.toString());             
+        }
+        catch( IOException ioe){
+            log.info("calculateAverageLegalCase_SQLException_2: "+ioe.toString());             
+        }
+         catch( Exception ex){
+            log.info("calculateAverageLegalCase_SQLException_2: "+ex.toString());             
+        }    
     }
     
-    public static void calculateNumberLegalCases() throws IOException, SQLException{
+    public static void calculateNumberLegalCases(){
+        try{
          CompanyService calculateNumberLegalCasesService = new CompanyServiceImpl();
          calculateNumberLegalCasesService.calculateNumberLegalCases();
+        }catch( SQLException sql){
+            log.info("calculateNumberLegalCases_SQLException_2: "+sql.toString());             
+        }
+        catch( IOException ioe){
+            log.info("calculateNumberLegalCases_SQLException_2: "+ioe.toString());             
+        }
+         catch( Exception ex){
+            log.info("calculateNumberLegalCases_SQLException_2: "+ex.toString());             
+        }    
     }   
 
-    public static void listLegalCases() throws IOException, SQLException{
+    public static void listLegalCases(){
+        try{
          CompanyService listLegalCasesService = new CompanyServiceImpl();
          listLegalCasesService.listLegalCases();
+        }catch( SQLException sql){
+            log.info("listLegalCases_SQLException_2: "+sql.toString());             
+        }
+        catch( IOException ioe){
+            log.info("listLegalCases_SQLException_2: "+ioe.toString());             
+        }
+         catch( Exception ex){
+            log.info("listLegalCases_SQLException_2: "+ex.toString());             
+        }    
     } 
 
-    public static void listLegalCasesSameDepartment() throws IOException, SQLException{
+    public static void listLegalCasesSameDepartment(){
+        try{
         CompanyService listLegalCasesSameDepartamentService = new CompanyServiceImpl();
         listLegalCasesSameDepartamentService.listLegalCasesSameDepartament();
+        }catch( SQLException sql){
+            log.info("listLegalCasesSameDepartment_SQLException_2: "+sql.toString());             
+        }
+        catch( IOException ioe){
+            log.info("listLegalCasesSameDepartment_SQLException_2: "+ioe.toString());             
+        }
+         catch( Exception ex){
+            log.info("listLegalCasesSameDepartment_SQLException_2: "+ex.toString());             
+        }   
     }     
-    public static void listLegalCasesContainAcronym() throws IOException, SQLException{
+    public static void listLegalCasesContainAcronym(){
+        try{
         CompanyService listLegalCasesContainAcronymService = new CompanyServiceImpl();
         listLegalCasesContainAcronymService.listLegalCasesContainAcronymService();  
+        }catch( SQLException sql){
+            log.info("listLegalCasesContainAcronym_SQLException_2: "+sql.toString());             
+        }
+        catch( IOException ioe){
+            log.info("listLegalCasesContainAcronym_SQLException_2: "+ioe.toString());             
+        }
+         catch( Exception ex){
+            log.info("listLegalCasesContainAcronym_SQLException_2: "+ex.toString());             
+        }   
     }    
  
-    public static void companyQuery() throws IOException, SQLException{
+    public static void companyQuery(){
+        try{
         CompanyService companyConsultService = new CompanyServiceImpl();
         companyConsultService.consultCompany();
+        }catch( SQLException sql){
+            log.info("companyQuery_SQLException_2: "+sql.toString());             
+        }
+        catch( IOException ioe){
+            log.info("companyQuery_SQLException_2: "+ioe.toString());             
+        }
+         catch( Exception ex){
+            log.info("companyQuery_SQLException_2: "+ex.toString());             
+        }   
     }    
-     public static void legalCasesQuery() throws IOException, SQLException{
+     public static void legalCasesQuery(){
+        try{ 
         CompanyService legalCasesService = new CompanyServiceImpl();
         legalCasesService.legalCases();
+        }catch( SQLException sql){
+            log.info("legalCasesQuery: "+sql.toString());             
+        }
+        catch( IOException ioe){
+            log.info("legalCasesQuery_SQLException_2: "+ioe.toString());             
+        }
+         catch( Exception ex){
+            log.info("legalCasesQuery_SQLException_2: "+ex.toString());             
+        }  
     }    
 
 

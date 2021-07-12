@@ -261,7 +261,7 @@ public class CompanyServiceImpl implements CompanyService {
                     "	    state_case,\n" +
                     "	    started\n" +
                     "  FROM LEGAL_CASES\n" +
-                    "  WHERE legal_case_number like'%TRAB%' ";
+                    "  WHERE legal_case_number LIKE '%TRAB%' ";
         List<LegalCasesDTO> listLegalCasesContainAcronym = new ArrayList<>();
         LegalCasesDTO legalCasesDTO = new LegalCasesDTO();
         //CompanyDTO companyDTO = new CompanyDTO();
@@ -270,22 +270,22 @@ public class CompanyServiceImpl implements CompanyService {
                      Statement.RETURN_GENERATED_KEYS)) {
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(SQL); 
-                while (rs.next()) {
-                 System.out.println("listLegalCases_LEGAL_CASE_NUMBER = " + rs.getString("LEGAL_CASE_NUMBER"));
-                 System.out.println("listLegalCases_REGISTER_NUMBER = " + rs.getString("REGISTER_NUMBER"));
-                 System.out.println("listLegalCases_DEPARTAMENT_CASE = " + rs.getString("DEPARTAMENT_CASE"));
-                 System.out.println("listLegalCases_TOTAL = " + rs.getInt("TOTAL"));
-                 System.out.println("listLegalCases_STATE_CASE = " + rs.getString("STATE_CASE"));
-                 System.out.println("listLegalCases_STARTED = " + rs.getDate("STARTED"));
-                 System.out.println("==========================================");
-                 legalCasesDTO.setLegalCaseNumber(rs.getString("LEGAL_CASE_NUMBER"));
-                 legalCasesDTO.setRegisterNumber(rs.getString("REGISTER_NUMBER"));
-                 legalCasesDTO.setDepartamentCase(rs.getString("DEPARTAMENT_CASE"));
-                 legalCasesDTO.setTotal(rs.getInt("TOTAL"));
-                 legalCasesDTO.setStateCase(rs.getString("STATE_CASE"));
-                 legalCasesDTO.setStarted(rs.getDate("STARTED"));
-                 listLegalCasesContainAcronym.add(legalCasesDTO);
-                 }                
+            while (rs.next()) {
+             System.out.println("listLegalCases_LEGAL_CASE_NUMBER = " + rs.getString("LEGAL_CASE_NUMBER"));
+             System.out.println("listLegalCases_REGISTER_NUMBER = " + rs.getString("REGISTER_NUMBER"));
+             System.out.println("listLegalCases_DEPARTAMENT_CASE = " + rs.getString("DEPARTAMENT_CASE"));
+             System.out.println("listLegalCases_TOTAL = " + rs.getInt("TOTAL"));
+             System.out.println("listLegalCases_STATE_CASE = " + rs.getString("STATE_CASE"));
+             System.out.println("listLegalCases_STARTED = " + rs.getDate("STARTED"));
+             System.out.println("==========================================");
+             legalCasesDTO.setLegalCaseNumber(rs.getString("LEGAL_CASE_NUMBER"));
+             legalCasesDTO.setRegisterNumber(rs.getString("REGISTER_NUMBER"));
+             legalCasesDTO.setDepartamentCase(rs.getString("DEPARTAMENT_CASE"));
+             legalCasesDTO.setTotal(rs.getInt("TOTAL"));
+             legalCasesDTO.setStateCase(rs.getString("STATE_CASE"));
+             legalCasesDTO.setStarted(rs.getDate("STARTED"));
+             listLegalCasesContainAcronym.add(legalCasesDTO);
+             }                
 
         }  catch (SQLException ex) {
             System.out.println("listLegalCasesContainAcronymService_SQLException: "+ ex.toString());
