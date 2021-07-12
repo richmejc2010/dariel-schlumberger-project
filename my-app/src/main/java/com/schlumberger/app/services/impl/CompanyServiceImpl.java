@@ -2,7 +2,6 @@ package com.schlumberger.app.services.impl;
 
 import com.schlumberger.app.entities.CompanyDTO;
 import com.schlumberger.app.entities.LegalCasesDTO;
-import com.schlumberger.app.repositories.ConnectDataBaseSingleton;
 import com.schlumberger.app.services.CompanyService;
 
 import java.io.IOException;
@@ -19,7 +18,7 @@ public class CompanyServiceImpl implements CompanyService {
     private  DecimalFormat df = new DecimalFormat("#.00");
     public Connection connect() throws SQLException, IOException {
         Properties properties = new Properties();
-        properties.load(ConnectDataBaseSingleton.class.getClassLoader().getResourceAsStream("application.properties"));
+        properties.load(CompanyServiceImpl.class.getClassLoader().getResourceAsStream("application.properties"));
         return DriverManager.getConnection(properties.getProperty("url"), properties);
     }
 
@@ -60,7 +59,7 @@ public class CompanyServiceImpl implements CompanyService {
     public List<CompanyDTO> consultCompany() throws IOException, SQLException {
         // Connect to database
         Properties properties = new Properties();
-        properties.load(ConnectDataBaseSingleton.class.getClassLoader().getResourceAsStream("application.properties"));
+        properties.load(CompanyServiceImpl.class.getClassLoader().getResourceAsStream("application.properties"));
 
         Connection conn = DriverManager.getConnection(properties.getProperty("url"), properties);
         Statement st = conn.createStatement();
@@ -84,7 +83,7 @@ public class CompanyServiceImpl implements CompanyService {
     public List<LegalCasesDTO> legalCases() throws IOException, SQLException {
         // Connect to database
         Properties properties = new Properties();
-        properties.load(ConnectDataBaseSingleton.class.getClassLoader().getResourceAsStream("application.properties"));
+        properties.load(CompanyServiceImpl.class.getClassLoader().getResourceAsStream("application.properties"));
 
         Connection conn = DriverManager.getConnection(properties.getProperty("url"), properties);
         Statement st = conn.createStatement();
@@ -116,7 +115,7 @@ public class CompanyServiceImpl implements CompanyService {
         // Connect to database
        // DecimalFormat df = new DecimalFormat("#.00");
         Properties properties = new Properties();
-        properties.load(ConnectDataBaseSingleton.class.getClassLoader().getResourceAsStream("application.properties"));
+        properties.load(CompanyServiceImpl.class.getClassLoader().getResourceAsStream("application.properties"));
 
         Connection conn = DriverManager.getConnection(properties.getProperty("url"), properties);
         Statement st = conn.createStatement();
@@ -138,7 +137,7 @@ public class CompanyServiceImpl implements CompanyService {
         int avergageLegalCase = 0;
         // Connect to database
         Properties properties = new Properties();
-        properties.load(ConnectDataBaseSingleton.class.getClassLoader().getResourceAsStream("application.properties"));
+        properties.load(CompanyServiceImpl.class.getClassLoader().getResourceAsStream("application.properties"));
 
         Connection conn = DriverManager.getConnection(properties.getProperty("url"), properties);
         Statement st = conn.createStatement();
@@ -160,7 +159,7 @@ public class CompanyServiceImpl implements CompanyService {
         int calculateNumberLegalCases = 0;
         // Connect to database
         Properties properties = new Properties();
-        properties.load(ConnectDataBaseSingleton.class.getClassLoader().getResourceAsStream("application.properties"));
+        properties.load(CompanyServiceImpl.class.getClassLoader().getResourceAsStream("application.properties"));
 
         Connection conn = DriverManager.getConnection(properties.getProperty("url"), properties);
         Statement st = conn.createStatement();
@@ -181,7 +180,7 @@ public class CompanyServiceImpl implements CompanyService {
 
         // Connect to database
         Properties properties = new Properties();
-        properties.load(ConnectDataBaseSingleton.class.getClassLoader().getResourceAsStream("application.properties"));
+        properties.load(CompanyServiceImpl.class.getClassLoader().getResourceAsStream("application.properties"));
 
         Connection conn = DriverManager.getConnection(properties.getProperty("url"), properties);
         Statement st = conn.createStatement();
@@ -215,7 +214,7 @@ public class CompanyServiceImpl implements CompanyService {
 
         // Connect to database
         Properties properties = new Properties();
-        properties.load(ConnectDataBaseSingleton.class.getClassLoader().getResourceAsStream("application.properties"));
+        properties.load(CompanyServiceImpl.class.getClassLoader().getResourceAsStream("application.properties"));
         
         Connection conn = DriverManager.getConnection(properties.getProperty("url"), properties);
         Statement st = conn.createStatement();

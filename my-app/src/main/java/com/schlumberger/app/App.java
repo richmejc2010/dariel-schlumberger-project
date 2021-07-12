@@ -116,9 +116,9 @@ public class App {
               "\n**"+"   5. List of legal case with the same department of the client." + "                              "+"**" + 
               "\n**"+"   6. List of legal cases that contains the acronym “TRAB”." + "                                   "+"**" + 
               "\n**"+"   7. Entering records COMPANY." + "                                                               "+"**" + 
-              "\n**"+"   8. Gettting Recors From COMPANY." + "                                                           "+"**" +    
+              "\n**"+"   8. Getting Recors From COMPANY." + "                                                           "+"**" +
               "\n**"+"   9. List of legal cases on the month of September and year 2007." + "                            "+"**" + 
-              "\n**"+"   10. Gettting Recors From LEGAL CASES." + "                                                      "+"**" + 
+              "\n**"+"   10. Getting Records From LEGAL CASES." + "                                                      "+"**" +
               "\n**"+"   0. Exit." + "                                                                                  "+"**" +
               "\n***************************************************************************************************" +
               "\n***************************************************************************************************"   
