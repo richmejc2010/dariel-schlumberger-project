@@ -44,6 +44,7 @@ public class CompanyServiceImpl implements CompanyService {
             // check the affected rows
             if (affectedRows > 0) {
                result="Data inserted successfully";   
+               System.out.println("Data inserted successfully in Company table.");
             } else {
                 result = "No insert apply"; 
                 System.out.println("No insert apply");
@@ -320,7 +321,8 @@ public class CompanyServiceImpl implements CompanyService {
             int affectedRows = pstmt.executeUpdate();
             // check the affected rows
             if (affectedRows > 0) {
-               result="Data inserted successfully";   
+               result="Data inserted successfully";  
+               System.out.println("Data inserted successfully in Legal Case table.");
             } else {
                 result = "No insert apply"; 
                 System.out.println("No insert apply");

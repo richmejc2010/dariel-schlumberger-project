@@ -71,6 +71,7 @@ public class App {
                 case 10: //Insert Legal Case
                                     // insert into DATA BASE
                     LegalCasesDTO legalcaseDTO = new LegalCasesDTO();
+                    companyQuery();
 
                     System.out.println("Enter Legal Case Number");
                     String legalCaseNumber = myObj.nextLine();
