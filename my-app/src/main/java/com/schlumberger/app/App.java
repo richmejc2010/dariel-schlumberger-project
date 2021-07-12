@@ -65,11 +65,7 @@ public class App {
                     break;
                 case 9:
                     legalCasesQuery();
-                    break;                
-                case 0://Exit
-                    flagMenu= true;
-                    System.out.println("Thanks for using Schulmber Demo System ");
-                    break;                
+                    break;                               
                 case 10: //Insert Legal Case
                                     // insert into DATA BASE
                     LegalCasesDTO legalcaseDTO = new LegalCasesDTO();
@@ -98,6 +94,10 @@ public class App {
                     CompanyService legalCase = new CompanyServiceImpl();
                     legalCase.addLegalCase(legalcaseDTO); 
                     break;    
+                case 0://Exit
+                    flagMenu= true;
+                    System.out.println("Thanks for using Schlumberger Demo System ");
+                    break;     
                 default: // Invalid Option
                       System.out.println("Invalid Option");
                       break;
@@ -116,10 +116,10 @@ public class App {
               "\n**"+"   5. List of legal case with the same department of the client." + "                              "+"**" + 
               "\n**"+"   6. List of legal cases that contains the acronym “TRAB”." + "                                   "+"**" + 
               "\n**"+"   7. Entering records COMPANY." + "                                                               "+"**" + 
-              "\n**"+"   8. Getting Recors From COMPANY." + "                                                           "+"**" +
-              "\n**"+"   9. List of legal cases on the month of September and year 2007." + "                            "+"**" + 
-              "\n**"+"   10. Getting Records From LEGAL CASES." + "                                                      "+"**" +
-              "\n**"+"   0. Exit." + "                                                                                  "+"**" +
+              "\n**"+"   8. Getting Recors From COMPANY." + "                                                            "+"**" +
+              "\n**"+"   9. Getting Records From LEGAL CASES." + "                                                       "+"**" + 
+              "\n**"+"   10. Entering records LEGAl CASES. " + "                                                         "+"**" +
+              "\n**"+"   0. Exit." + "                                                                                   "+"**" +
               "\n***************************************************************************************************" +
               "\n***************************************************************************************************"   
                 );
